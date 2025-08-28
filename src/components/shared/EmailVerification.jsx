@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 const EmailVerification = () => {
   // Get user from localStorage
@@ -51,7 +52,7 @@ const EmailVerification = () => {
     setLoading(true);
     setMessage("");
     try {
-      const res = await axios.post("http://localhost:4000/api/user/generate-code", { email });
+      const res = await axios.post(`${API_BASE_URL}/user/generate-code`, { email });
       setMessage(res.data.message);
       setStep("verify");
       setHasPendingCode(true);
@@ -70,7 +71,7 @@ const EmailVerification = () => {
     setLoading(true);
     setMessage("");
     try {
-      const res = await axios.post("http://localhost:4000/api/user/verify-code", { email, code });
+      const res = await axios.post(`${API_BASE_URL}/user/verify-code`, { email, code });
       setMessage(res.data.message);
       
       // Update the user in localStorage to reflect verified status

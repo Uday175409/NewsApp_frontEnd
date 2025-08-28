@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
 import {
   Eye,
   EyeOff,
@@ -93,7 +94,7 @@ const Register = () => {
       console.log("Data sent:", registrationData);
 
       const res = await axios.post(
-        "http://localhost:4000/api/user/register",
+        `${API_BASE_URL}/user/register`,
         registrationData
       );
       console.log("✅ API response:", res.data);

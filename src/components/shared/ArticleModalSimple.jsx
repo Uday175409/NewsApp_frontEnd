@@ -6,6 +6,7 @@ import { Heart, Bookmark, BookmarkCheck, Share2, ExternalLink, Calendar, User, X
 import { useTheme } from '../../contexts/ThemeContext';
 import CommentsSectionModal from './CommentsSectionModal';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config/api';
 import "../css/ArticleModal.css"; // Assuming you have a CSS file for styling
 
 export default function ArticleModal({ article, onClose }) {
@@ -27,7 +28,7 @@ export default function ArticleModal({ article, onClose }) {
     const ensureArticleExists = async () => {
       try {
         setLoading(true);
-        const articleResponse = await axios.post('http://localhost:4000/api/article/create', {
+        const articleResponse = await axios.post(`${API_BASE_URL}/article/create`, {
           link: article.link || article.url || `#${article.title}`,
           title: article.title,
           description: article.description,
@@ -54,7 +55,7 @@ export default function ArticleModal({ article, onClose }) {
         if (user && dbArticleId) {
           try {
             console.log('🔍 Adding to reading history - User:', user.id, 'ArticleId:', dbArticleId);
-            const historyResponse = await axios.post(`http://localhost:4000/api/user/reading-history/${dbArticleId}`, {}, {
+            const historyResponse = await axios.post(`${API_BASE_URL}/user/reading-history/${dbArticleId}`, {}, {
               headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
               },
@@ -105,7 +106,7 @@ export default function ArticleModal({ article, onClose }) {
       if (articleDbId) {
         try {
           await axios.post(
-            `http://localhost:4000/api/articles/${articleDbId}/like`,
+            `${API_BASE_URL}/articles/${articleDbId}/like`,
             {},
             {
               headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
@@ -146,7 +147,7 @@ export default function ArticleModal({ article, onClose }) {
       if (articleDbId) {
         try {
           await axios.post(
-            `http://localhost:4000/api/articles/${articleDbId}/bookmark`,
+            `${API_BASE_URL}/articles/${articleDbId}/bookmark`,
             {},
             {
               headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },

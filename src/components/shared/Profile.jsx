@@ -6,6 +6,7 @@ import ArticleModalSimple from "./ArticleModalSimple.jsx";
 import Counter from "../ui/counter/Counter.jsx";
 import { StylizedPhoneDisplay } from "../ui/PhoneDisplay.jsx";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -68,7 +69,7 @@ const Profile = () => {
       };
 
       const res = await axios.get(
-        `http://localhost:4000/api/article/${endpointMap[tab]}`,
+        `${API_BASE_URL}/article/${endpointMap[tab]}`,
         {
           headers: { Authorization: `Bearer ${token}` },
           withCredentials: true,
@@ -92,15 +93,15 @@ const Profile = () => {
       console.log("🔄 Loading activity stats...");
 
       const [bookmarksRes, likesRes, historyRes] = await Promise.all([
-        axios.get("http://localhost:4000/api/article/bookmarks", {
+        axios.get(`${API_BASE_URL}/article/bookmarks`, {
           headers: { Authorization: `Bearer ${token}` },
           withCredentials: true,
         }),
-        axios.get("http://localhost:4000/api/article/likes", {
+        axios.get(`${API_BASE_URL}/article/likes`, {
           headers: { Authorization: `Bearer ${token}` },
           withCredentials: true,
         }),
-        axios.get("http://localhost:4000/api/article/history", {
+        axios.get(`${API_BASE_URL}/article/history`, {
           headers: { Authorization: `Bearer ${token}` },
           withCredentials: true,
         }),

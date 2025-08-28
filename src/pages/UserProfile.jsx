@@ -4,6 +4,7 @@ import { addToast } from '../store/slices/uiSlice';
 import { updateUser } from '../store/slices/authSlice';
 import ArticleModalSimple from '../components/shared/ArticleModalSimple';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 const UserProfile = () => {
   const { user } = useSelector((state) => state.auth);
@@ -79,7 +80,7 @@ const UserProfile = () => {
 
       // Fetch updated user profile data
       try {
-        const userResponse = await axios.get('http://localhost:4000/api/user/me', {
+        const userResponse = await axios.get(`${API_BASE_URL}/user/me`, {
           headers: { 'Authorization': `Bearer ${token}` },
           withCredentials: true,
         });
@@ -95,7 +96,7 @@ const UserProfile = () => {
 
       // Fetch user statistics
       try {
-        const statsResponse = await axios.get('http://localhost:4000/api/user/statistics', {
+        const statsResponse = await axios.get(`${API_BASE_URL}/user/statistics`, {
           headers: { 'Authorization': `Bearer ${token}` },
           withCredentials: true,
         });
@@ -109,7 +110,7 @@ const UserProfile = () => {
 
       // Fetch reading history
       try {
-        const historyResponse = await axios.get('http://localhost:4000/api/user/reading-history', {
+        const historyResponse = await axios.get(`${API_BASE_URL}/user/reading-history`, {
           headers: { 'Authorization': `Bearer ${token}` },
           withCredentials: true,
         });
@@ -123,7 +124,7 @@ const UserProfile = () => {
 
       // Fetch user badges
       try {
-        const badgesResponse = await axios.get('http://localhost:4000/api/user/badges', {
+        const badgesResponse = await axios.get(`${API_BASE_URL}/user/badges`, {
           headers: { 'Authorization': `Bearer ${token}` },
           withCredentials: true,
         });
@@ -251,7 +252,7 @@ const UserProfile = () => {
         formData.append('profilePicture', selectedProfilePicture);
       }
 
-      const response = await axios.put('http://localhost:4000/api/user/profile/update', formData, {
+      const response = await axios.put(`${API_BASE_URL}/user/profile/update`, formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data',

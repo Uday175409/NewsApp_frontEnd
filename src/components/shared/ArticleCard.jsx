@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openArticleModal, addToast } from '../../store/slices/uiSlice';
 import { toggleBookmarkAsync, toggleLikeAsync } from '../../store/slices/newsSlice';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config/api';
 import defaultImage from '../../assets/default.png';
 
 export default function ArticleCard({ article, variant = "default" }) {
@@ -44,7 +45,7 @@ export default function ArticleCard({ article, variant = "default" }) {
     // Track view when opening modal
     if (user) {
       try {
-        await axios.post('http://localhost:4000/api/article/view', {
+        await axios.post(`${API_BASE_URL}/article/view`, {
           link: article.link || article.url || `#${article.title}`,
           title: article.title,
           description: article.description,

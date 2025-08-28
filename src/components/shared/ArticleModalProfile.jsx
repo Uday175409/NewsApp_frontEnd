@@ -22,6 +22,7 @@ import {
   Send,
 } from "lucide-react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 import { useTheme } from "../../contexts/ThemeContext";
 import defaultImage from "../../assets/default.png";
 import { addToast } from "../../store/slices/uiSlice";
@@ -56,7 +57,7 @@ export default function ArticleModalProfile({ article, onClose }) {
       console.log("📋 Article data:", article);
 
       const response = await axios.post(
-        "http://localhost:4000/api/article/view",
+        `${API_BASE_URL}/article/view`,
         {
           link: article.link || article.url || `#${article.title}`,
           title: article.title,
@@ -125,11 +126,11 @@ export default function ArticleModalProfile({ article, onClose }) {
     try {
       // Load bookmarks, likes, and comments for this article
       const [bookmarksRes, likesRes] = await Promise.all([
-        axios.get("http://localhost:4000/api/article/bookmarks", {
+        axios.get(`${API_BASE_URL}/article/bookmarks`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
           withCredentials: true,
         }),
-        axios.get("http://localhost:4000/api/article/likes", {
+        axios.get(`${API_BASE_URL}/article/likes`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
           withCredentials: true,
         })
@@ -177,7 +178,7 @@ export default function ArticleModalProfile({ article, onClose }) {
 
     try {
       const response = await axios.patch(
-        "http://localhost:4000/api/article/bookmark",
+        `${API_BASE_URL}/article/bookmark`,
         { articleId },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -206,7 +207,7 @@ export default function ArticleModalProfile({ article, onClose }) {
 
     try {
       const response = await axios.patch(
-        "http://localhost:4000/api/article/like",
+        `${API_BASE_URL}/article/like`,
         { articleId },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -280,7 +281,7 @@ export default function ArticleModalProfile({ article, onClose }) {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:4000/api/comment/add",
+        `${API_BASE_URL}/comment/add`,
         {
           articleId,
           content: newComment.trim(),

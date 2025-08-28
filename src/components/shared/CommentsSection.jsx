@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CommentItem from './CommentItem';
 import { addToast } from '../../store/slices/uiSlice';
 import { uploadService } from '../../services/imageUploadService';
+import { API_BASE_URL } from '../../config/api';
 
 const CommentsSection = ({ articleId, user }) => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const CommentsSection = ({ articleId, user }) => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/comment/${articleId}?sort=${sortBy}`, {
+      const response = await fetch(`${API_BASE_URL}/comment/${articleId}?sort=${sortBy}`, {
         headers: {
           'Authorization': token ? `Bearer ${token}` : ''
         }
@@ -72,7 +73,7 @@ const CommentsSection = ({ articleId, user }) => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/comment/${articleId}`, {
+      const response = await fetch(`${API_BASE_URL}/comment/${articleId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -111,7 +112,7 @@ const CommentsSection = ({ articleId, user }) => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/comment/${articleId}/${commentId}/upvote`, {
+      const response = await fetch(`${API_BASE_URL}/comment/${articleId}/${commentId}/upvote`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -134,7 +135,7 @@ const CommentsSection = ({ articleId, user }) => {
   const handleEditComment = async (commentId, newText) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/comment/${articleId}/${commentId}`, {
+      const response = await fetch(`${API_BASE_URL}/comment/${articleId}/${commentId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -167,7 +168,7 @@ const CommentsSection = ({ articleId, user }) => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/comment/${articleId}/${commentId}`, {
+      const response = await fetch(`${API_BASE_URL}/comment/${articleId}/${commentId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -198,7 +199,7 @@ const CommentsSection = ({ articleId, user }) => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/comment/${articleId}/${commentId}/report`, {
+      const response = await fetch(`${API_BASE_URL}/comment/${articleId}/${commentId}/report`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -239,7 +240,7 @@ const CommentsSection = ({ articleId, user }) => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/comment/reply/${replyingTo}`, {
+      const response = await fetch(`${API_BASE_URL}/comment/reply/${replyingTo}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

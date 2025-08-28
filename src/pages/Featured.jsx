@@ -7,6 +7,7 @@ import { openArticleModal, closeArticleModal } from "../store/slices/uiSlice";
 import ArticleCard from "../components/shared/ArticleCard";
 import ArticleModalSimple from "../components/shared/ArticleModalSimple";
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
 export default function Featured() {
   const [articles, setArticles] = useState([]);
@@ -26,7 +27,7 @@ export default function Featured() {
 
   const fetchTrending = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/article/featured");
+      const res = await axios.get(`${API_BASE_URL}/article/featured`);
       setArticles(res.data.articles || []);
     } catch (err) {
       setError("Failed to load trending articles");

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 import { 
   ThumbsUp, 
   ThumbsDown, 
@@ -34,7 +35,7 @@ export default function CommentCard({ articleId }) {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:4000/api/comments/${articleId}`,
+        `${API_BASE_URL}/comments/${articleId}`,
         { withCredentials: true }
       );
       setComments(res.data.comments || []);
@@ -53,7 +54,7 @@ export default function CommentCard({ articleId }) {
     try {
       setIsSubmitting(true);
       await axios.post(
-        `http://localhost:4000/api/comments/${articleId}`,
+        `${API_BASE_URL}/comments/${articleId}`,
         {
           commentText: newComment,
         },
@@ -78,7 +79,7 @@ export default function CommentCard({ articleId }) {
   const handleUpvote = async (commentId) => {
     try {
       await axios.patch(
-        `http://localhost:4000/api/comments/${articleId}/${commentId}/upvote`,
+        `${API_BASE_URL}/comments/${articleId}/${commentId}/upvote`,
         {},
         { withCredentials: true }
       );
@@ -98,7 +99,7 @@ export default function CommentCard({ articleId }) {
     
     try {
       await axios.patch(
-        `http://localhost:4000/api/comments/${articleId}/${commentId}`,
+        `${API_BASE_URL}/comments/${articleId}/${commentId}`,
         { commentText: editText },
         { withCredentials: true }
       );
@@ -121,7 +122,7 @@ export default function CommentCard({ articleId }) {
     
     try {
       await axios.delete(
-        `http://localhost:4000/api/comments/${articleId}/${commentId}`,
+        `${API_BASE_URL}/comments/${articleId}/${commentId}`,
         { withCredentials: true }
       );
       fetchComments();

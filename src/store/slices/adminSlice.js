@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config/api';
 
 // Admin Login
 export const adminLogin = createAsyncThunk(
   'admin/login',
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:4000/api/admin/login', {
+      const response = await axios.post(`${API_BASE_URL}/admin/login`, {
         email,
         password,
       }, {
@@ -34,7 +35,7 @@ export const adminLogout = createAsyncThunk(
   'admin/logout',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:4000/api/admin/logout', {}, {
+      const response = await axios.post(`${API_BASE_URL}/admin/logout`, {}, {
         withCredentials: true,
       });
       
@@ -60,7 +61,7 @@ export const fetchDashboardStats = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.get('http://localhost:4000/api/admin/dashboard', {
+      const response = await axios.get(`${API_BASE_URL}/admin/dashboard`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
@@ -80,7 +81,7 @@ export const fetchAllUsers = createAsyncThunk(
   async ({ page = 1, limit = 10, search = '', sortBy = 'createdAt', sortOrder = 'desc' }, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.get('http://localhost:4000/api/admin/users', {
+      const response = await axios.get(`${API_BASE_URL}/admin/users`, {
         params: { page, limit, search, sortBy, sortOrder },
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
@@ -101,7 +102,7 @@ export const fetchUserDetails = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.get(`http://localhost:4000/api/admin/users/${userId}`, {
+      const response = await axios.get(`${API_BASE_URL}/admin/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
@@ -121,7 +122,7 @@ export const deleteUser = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.delete(`http://localhost:4000/api/admin/users/${userId}`, {
+      const response = await axios.delete(`${API_BASE_URL}/admin/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
@@ -160,7 +161,7 @@ export const fetchActivityAnalytics = createAsyncThunk(
       }
       
       const token = localStorage.getItem('adminToken');
-      const response = await axios.get('http://localhost:4000/api/admin/analytics', {
+      const response = await axios.get(`${API_BASE_URL}/admin/analytics`, {
         params: { period },
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
@@ -181,7 +182,7 @@ export const fetchSystemHealth = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.get('http://localhost:4000/api/admin/system-health', {
+      const response = await axios.get(`${API_BASE_URL}/admin/system-health`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });

@@ -4,6 +4,7 @@ import { addToast } from '../../store/slices/uiSlice';
 import { ReplyIcon, ChevronUpIcon, ChevronDownIcon, PencilIcon, TrashIcon } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config/api';
 
 const CommentsSectionModal = ({ articleId, user }) => {
   const [newComment, setNewComment] = useState('');
@@ -32,7 +33,7 @@ const CommentsSectionModal = ({ articleId, user }) => {
     setCommentsLoading(true);
     try {
       console.log('🔍 Fetching comments with sort:', sortOrder);
-      const response = await axios.get(`http://localhost:4000/api/comments/${articleId}?sort=${sortOrder}`);
+      const response = await axios.get(`${API_BASE_URL}/comments/${articleId}?sort=${sortOrder}`);
       console.log('📝 Fetched comments:', response.data);
       
       const commentsData = response.data.comments || [];
@@ -87,7 +88,7 @@ const CommentsSectionModal = ({ articleId, user }) => {
         parentId: null
       });
       
-      const response = await axios.post(`http://localhost:4000/api/comments/${articleId}`, {
+      const response = await axios.post(`${API_BASE_URL}/comments/${articleId}`, {
         commentText: newComment,
         parentId: null
       }, {
@@ -321,7 +322,7 @@ const CommentCard = ({ comment, articleId, user, onCommentDeleted, commentsMap }
 
     try {
       setIsProcessing(true);
-      const response = await axios.post(`http://localhost:4000/api/comments/${articleId}`, {
+      const response = await axios.post(`${API_BASE_URL}/comments/${articleId}`, {
         commentText: replyText,
         parentId: comment._id
       }, {
@@ -377,7 +378,7 @@ const CommentCard = ({ comment, articleId, user, onCommentDeleted, commentsMap }
     try {
       setIsProcessing(true);
       
-      const response = await axios.put(`http://localhost:4000/api/comments/${articleId}/${comment._id}`, {
+      const response = await axios.put(`${API_BASE_URL}/comments/${articleId}/${comment._id}`, {
         commentText: editText
       }, {
         headers: {
@@ -421,7 +422,7 @@ const CommentCard = ({ comment, articleId, user, onCommentDeleted, commentsMap }
     try {
       setIsProcessing(true);
       
-      const response = await axios.delete(`http://localhost:4000/api/comments/${articleId}/${comment._id}`, {
+      const response = await axios.delete(`${API_BASE_URL}/comments/${articleId}/${comment._id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },

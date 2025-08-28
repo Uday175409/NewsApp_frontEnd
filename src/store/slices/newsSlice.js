@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config/api';
 
 // Track ongoing requests to prevent duplicates
 let currentFetchRequest = null;
@@ -32,7 +33,7 @@ export const fetchArticles = createAsyncThunk(
       currentFetchRequest = { signature: requestSignature };
 
       console.log('Making API request with params:', params);
-      const response = await axios.get('http://localhost:4000/api/news', {
+      const response = await axios.get(`${API_BASE_URL}/news`, {
         params,
         withCredentials: true,
       });
@@ -83,7 +84,7 @@ export const searchArticles = createAsyncThunk(
       currentSearchRequest = { signature: requestSignature };
 
       console.log('Making search API request with params:', params);
-      const response = await axios.get('http://localhost:4000/api/news', {
+      const response = await axios.get(`${API_BASE_URL}/news`, {
         params,
         withCredentials: true,
       });
@@ -113,7 +114,7 @@ export const toggleBookmarkAsync = createAsyncThunk(
   async (article, { rejectWithValue }) => {
     try {
       // First, we need to get or create an article ID without marking as viewed
-      const viewResponse = await axios.post('http://localhost:4000/api/article/create', article, {
+      const viewResponse = await axios.post(`${API_BASE_URL}/article/create`, article, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
@@ -128,7 +129,7 @@ export const toggleBookmarkAsync = createAsyncThunk(
       const articleId = viewResponse.data.articleId;
 
       // Then toggle bookmark
-      const bookmarkResponse = await axios.patch('http://localhost:4000/api/article/bookmark', 
+      const bookmarkResponse = await axios.patch(`${API_BASE_URL}/article/bookmark`, 
         { articleId },
         {
           headers: {
@@ -159,7 +160,7 @@ export const toggleLikeAsync = createAsyncThunk(
   async (article, { rejectWithValue }) => {
     try {
       // First, we need to get or create an article ID without marking as viewed
-      const viewResponse = await axios.post('http://localhost:4000/api/article/create', article, {
+      const viewResponse = await axios.post(`${API_BASE_URL}/article/create`, article, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
@@ -174,7 +175,7 @@ export const toggleLikeAsync = createAsyncThunk(
       const articleId = viewResponse.data.articleId;
 
       // Then toggle like
-      const likeResponse = await axios.patch('http://localhost:4000/api/article/like', 
+      const likeResponse = await axios.patch(`${API_BASE_URL}/article/like`, 
         { articleId },
         {
           headers: {
@@ -204,7 +205,7 @@ export const fetchBookmarks = createAsyncThunk(
   'news/fetchBookmarks',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('http://localhost:4000/api/article/bookmarks', {
+      const response = await axios.get(`${API_BASE_URL}/article/bookmarks`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
@@ -227,7 +228,7 @@ export const fetchLikes = createAsyncThunk(
   'news/fetchLikes',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('http://localhost:4000/api/article/likes', {
+      const response = await axios.get(`${API_BASE_URL}/article/likes`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
@@ -250,7 +251,7 @@ export const fetchFeaturedArticles = createAsyncThunk(
   'news/fetchFeaturedArticles',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('http://localhost:4000/api/article/featured', {
+      const response = await axios.get(`${API_BASE_URL}/article/featured`, {
         withCredentials: true,
       });
 

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 // Async thunk for login
 export const loginUser = createAsyncThunk(
@@ -10,7 +11,7 @@ export const loginUser = createAsyncThunk(
       console.log("📧 Login credentials:", { email });
 
       const response = await axios.post(
-        "http://localhost:4000/api/user/login",
+        `${API_BASE_URL}/user/login`,
         {
           email,
           password,
@@ -65,7 +66,7 @@ export const fetchUserProfile = createAsyncThunk(
 
       console.log("📤 REDUX FETCH - Sending profile request");
 
-      const response = await axios.get("http://localhost:4000/api/user/me", {
+      const response = await axios.get(`${API_BASE_URL}/user/me`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
@@ -124,7 +125,7 @@ export const updateUserProfile = createAsyncThunk(
       console.log("📤 REDUX UPDATE - Sending update request");
 
       const response = await axios.put(
-        "http://localhost:4000/api/user/profile/update",
+        `${API_BASE_URL}/user/profile/update`,
         profileData,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -183,7 +184,7 @@ export const refreshToken = createAsyncThunk(
       }
 
       const response = await axios.post(
-        "http://localhost:4000/api/user/refresh-token",
+        `${API_BASE_URL}/user/refresh-token`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

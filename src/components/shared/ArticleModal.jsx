@@ -22,6 +22,7 @@ import {
   Send,
 } from "lucide-react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 import { useTheme } from "../../contexts/ThemeContext";
 import useAuthRedirect from "../../hooks/useAuthRedirect";
 import defaultImage from "../../assets/default.png";
@@ -68,7 +69,7 @@ export default function ArticleModal({ article, onClose }) {
       }
 
       const res = await axios.post(
-        "http://localhost:4000/api/article/view",
+        `${API_BASE_URL}/article/view`,
         {
           link: article.link,
           title: article.title,
@@ -181,7 +182,7 @@ export default function ArticleModal({ article, onClose }) {
       if (!id) return;
 
       await axios.patch(
-        "http://localhost:4000/api/article/bookmark",
+        `${API_BASE_URL}/article/bookmark`,
         { articleId: id },
         {
           headers: {
@@ -213,7 +214,7 @@ export default function ArticleModal({ article, onClose }) {
       if (!id) return;
 
       await axios.patch(
-        "http://localhost:4000/api/article/like",
+        `${API_BASE_URL}/article/like`,
         { articleId: id },
         {
           headers: {
