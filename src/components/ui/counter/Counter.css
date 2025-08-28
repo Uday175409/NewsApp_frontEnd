@@ -1,0 +1,217 @@
+.counter-container {
+  position: relative;
+  display: inline-block;
+}
+
+.counter-counter {
+  display: flex;
+  overflow: hidden;
+  line-height: 1;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Bootstrap-compatible base styles */
+.counter-counter.bootstrap-style {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.counter-digit {
+  position: relative;
+  width: 1ch;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.counter-number {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.gradient-container {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.top-gradient {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent);
+}
+
+/* Size variants - Bootstrap compatible */
+.counter-small {
+  font-size: 0.875rem; /* text-sm */
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.counter-medium {
+  font-size: 1.125rem; /* text-lg */
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.counter-large {
+  font-size: 1.5rem; /* text-2xl */
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.counter-xl {
+  font-size: 2rem; /* text-3xl */
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+}
+
+/* Theme variants - Bootstrap inspired */
+.counter-primary {
+  background: var(--bs-primary, #0d6efd);
+  color: white;
+}
+
+.counter-success {
+  background: var(--bs-success, #198754);
+  color: white;
+}
+
+.counter-danger {
+  background: var(--bs-danger, #dc3545);
+  color: white;
+}
+
+.counter-warning {
+  background: var(--bs-warning, #ffc107);
+  color: var(--bs-dark, #212529);
+}
+
+.counter-info {
+  background: var(--bs-info, #0dcaf0);
+  color: var(--bs-dark, #212529);
+}
+
+.counter-dark {
+  background: var(--bs-dark, #212529);
+  color: white;
+}
+
+.counter-light {
+  background: var(--bs-light, #f8f9fa);
+  color: var(--bs-dark, #212529);
+  border: 1px solid var(--bs-border-color, #dee2e6);
+}
+
+.counter-transparent {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Dark theme support */
+[data-bs-theme="dark"] .counter-light {
+  background: var(--bs-gray-800, #343a40);
+  color: var(--bs-gray-100, #f8f9fa);
+  border-color: var(--bs-gray-600, #6c757d);
+}
+
+[data-bs-theme="dark"] .counter-transparent {
+  color: var(--bs-gray-100, #f8f9fa);
+}
+
+/* Icon counter styles - Bootstrap badge-like */
+.icon-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.icon-counter:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.icon-counter .icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.icon-counter.likes {
+  background-color: var(--bs-danger, #dc3545);
+  color: white;
+}
+
+.icon-counter.views {
+  background-color: var(--bs-info, #0dcaf0);
+  color: var(--bs-dark, #212529);
+}
+
+.icon-counter.comments {
+  background-color: var(--bs-success, #198754);
+  color: white;
+}
+
+.icon-counter.bookmarks {
+  background-color: var(--bs-warning, #ffc107);
+  color: var(--bs-dark, #212529);
+}
+
+.icon-counter.shares {
+  background-color: var(--bs-primary, #0d6efd);
+  color: white;
+}
+
+/* Card integration styles */
+.card .counter-container {
+  width: 100%;
+}
+
+.card .counter-counter {
+  justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .counter-xl {
+    font-size: 1.5rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  .counter-large {
+    font-size: 1.25rem;
+    padding: 0.5rem 0.75rem;
+  }
+}

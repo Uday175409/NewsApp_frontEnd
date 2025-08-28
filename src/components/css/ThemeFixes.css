@@ -1,0 +1,412 @@
+/* Theme Fixes - Ensures text visibility across all theme changes */
+
+/* Global text color fixes */
+.dark-mode {
+  color: #f9fafb;
+}
+
+.dark-mode * {
+  border-color: #374151;
+}
+
+/* Bootstrap overrides for dark mode */
+.dark-mode .text-muted {
+  color: #9ca3af !important;
+}
+
+.dark-mode .text-dark {
+  color: #f9fafb !important;
+}
+
+.dark-mode .text-secondary {
+  color: #d1d5db !important;
+}
+
+.dark-mode .bg-light {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .bg-white {
+  background-color: #111827 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .card {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
+}
+
+.dark-mode .card-body {
+  color: #f9fafb !important;
+}
+
+.dark-mode .card-title {
+  color: #f9fafb !important;
+}
+
+.dark-mode .card-text {
+  color: #d1d5db !important;
+}
+
+/* Form elements */
+.dark-mode .form-control {
+  background-color: #1f2937 !important;
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .form-control:focus {
+  background-color: #1f2937 !important;
+  border-color: #60a5fa !important;
+  color: #f9fafb !important;
+  box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.25) !important;
+}
+
+.dark-mode .form-control::placeholder {
+  color: #9ca3af !important;
+}
+
+.dark-mode .form-label {
+  color: #d1d5db !important;
+}
+
+/* Button fixes */
+.dark-mode .btn-outline-primary {
+  color: #60a5fa !important;
+  border-color: #60a5fa !important;
+}
+
+.dark-mode .btn-outline-primary:hover {
+  background-color: #60a5fa !important;
+  border-color: #60a5fa !important;
+  color: #111827 !important;
+}
+
+.dark-mode .btn-outline-secondary {
+  color: #d1d5db !important;
+  border-color: #4b5563 !important;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+  background-color: #4b5563 !important;
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+/* Table fixes */
+.dark-mode .table {
+  color: #f9fafb !important;
+}
+
+.dark-mode .table-dark {
+  --bs-table-bg: #1f2937 !important;
+  --bs-table-color: #f9fafb !important;
+}
+
+/* Modal fixes */
+.dark-mode .modal-content {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  border-color: #374151 !important;
+}
+
+.dark-mode .modal-header {
+  border-color: #374151 !important;
+}
+
+.dark-mode .modal-footer {
+  border-color: #374151 !important;
+}
+
+.dark-mode .modal-title {
+  color: #f9fafb !important;
+}
+
+/* Dropdown fixes */
+.dark-mode .dropdown-menu {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+}
+
+.dark-mode .dropdown-item {
+  color: #d1d5db !important;
+}
+
+.dark-mode .dropdown-item:hover {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .dropdown-divider {
+  border-color: #374151 !important;
+}
+
+/* Alert fixes */
+.dark-mode .alert {
+  border-color: #374151 !important;
+}
+
+.dark-mode .alert-primary {
+  background-color: rgba(96, 165, 250, 0.1) !important;
+  border-color: #60a5fa !important;
+  color: #93c5fd !important;
+}
+
+.dark-mode .alert-danger {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  border-color: #ef4444 !important;
+  color: #fca5a5 !important;
+}
+
+.dark-mode .alert-success {
+  background-color: rgba(34, 197, 94, 0.1) !important;
+  border-color: #22c55e !important;
+  color: #86efac !important;
+}
+
+.dark-mode .alert-warning {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  border-color: #f59e0b !important;
+  color: #fcd34d !important;
+}
+
+/* Badge fixes */
+.dark-mode .badge {
+  color: #111827 !important;
+}
+
+.dark-mode .badge.bg-secondary {
+  background-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+/* List group fixes */
+.dark-mode .list-group-item {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .list-group-item:hover {
+  background-color: #374151 !important;
+}
+
+/* Navbar specific fixes */
+.dark-mode .navbar-light .navbar-nav .nav-link {
+  color: #d1d5db !important;
+}
+
+.dark-mode .navbar-light .navbar-nav .nav-link:hover {
+  color: #f9fafb !important;
+}
+
+.dark-mode .navbar-light .navbar-brand {
+  color: #f9fafb !important;
+}
+
+/* Breadcrumb fixes */
+.dark-mode .breadcrumb {
+  background-color: #1f2937 !important;
+}
+
+.dark-mode .breadcrumb-item {
+  color: #d1d5db !important;
+}
+
+.dark-mode .breadcrumb-item.active {
+  color: #9ca3af !important;
+}
+
+.dark-mode .breadcrumb-item + .breadcrumb-item::before {
+  color: #6b7280 !important;
+}
+
+/* Pagination fixes */
+.dark-mode .page-link {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #d1d5db !important;
+}
+
+.dark-mode .page-link:hover {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .page-item.active .page-link {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+/* Progress bar fixes */
+.dark-mode .progress {
+  background-color: #374151 !important;
+}
+
+/* Spinner fixes */
+.dark-mode .spinner-border {
+  color: #60a5fa !important;
+}
+
+/* Toast fixes */
+.dark-mode .toast {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .toast-header {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+/* Accordion fixes */
+.dark-mode .accordion-item {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+}
+
+.dark-mode .accordion-button {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .accordion-button:not(.collapsed) {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .accordion-body {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+/* Tab fixes */
+.dark-mode .nav-tabs {
+  border-color: #374151 !important;
+}
+
+.dark-mode .nav-tabs .nav-link {
+  color: #d1d5db !important;
+  border-color: transparent !important;
+}
+
+.dark-mode .nav-tabs .nav-link:hover {
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .nav-tabs .nav-link.active {
+  background-color: #1f2937 !important;
+  border-color: #374151 #374151 #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .tab-content {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+/* Offcanvas fixes */
+.dark-mode .offcanvas {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .offcanvas-header {
+  border-color: #374151 !important;
+}
+
+.dark-mode .offcanvas-title {
+  color: #f9fafb !important;
+}
+
+/* Close button fixes */
+.dark-mode .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Input group fixes */
+.dark-mode .input-group-text {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #d1d5db !important;
+}
+
+/* Custom component fixes */
+.dark-mode .article-card {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode .article-card .card-title {
+  color: #f9fafb !important;
+}
+
+.dark-mode .article-card .card-text {
+  color: #d1d5db !important;
+}
+
+/* Ensure all text elements are visible */
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+  color: #f9fafb !important;
+}
+
+.dark-mode p {
+  color: #d1d5db !important;
+}
+
+.dark-mode span {
+  color: inherit !important;
+}
+
+.dark-mode small {
+  color: #9ca3af !important;
+}
+
+/* Link fixes */
+.dark-mode a {
+  color: #60a5fa !important;
+}
+
+.dark-mode a:hover {
+  color: #93c5fd !important;
+}
+
+/* Ensure proper contrast for all interactive elements */
+.dark-mode button:not(.btn) {
+  color: #d1d5db !important;
+}
+
+.dark-mode input:not(.form-control) {
+  background-color: #1f2937 !important;
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode textarea:not(.form-control) {
+  background-color: #1f2937 !important;
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+.dark-mode select:not(.form-select) {
+  background-color: #1f2937 !important;
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+/* Fix for any remaining invisible text */
+.dark-mode * {
+  color: inherit;
+}
+
+.dark-mode *:not([class*="text-"]):not([class*="bg-"]):not(.btn):not(.badge):not(.alert) {
+  color: #d1d5db;
+}
