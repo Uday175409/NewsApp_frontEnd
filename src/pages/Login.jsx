@@ -132,7 +132,7 @@ const Login = () => {
   const handleDemoLogin = async () => {
     setFormData({
       email: "demo@example.com",
-      password: "demo123"
+      password: "Demo@123"
     });
   };
 
